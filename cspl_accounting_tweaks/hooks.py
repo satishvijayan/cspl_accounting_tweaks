@@ -182,3 +182,15 @@ app_license = "MIT"
 # 	"cspl_accounting_tweaks.auth.validate"
 # ]
 
+fixtures = [	{
+                "dt": "DocType",
+                "filters": { "custom" : ["=", "1"] }
+               	}
+		, {
+                "dt": "Custom Field", "filters": {"dt" : ["in", ("Bank Transaction Payments", "Company")]}
+                }
+		, "Client Script"
+        , "Property Setter"
+        , "Letter Head"
+		]
+

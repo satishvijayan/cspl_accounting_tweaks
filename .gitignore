@@ -4,3 +4,4 @@
 *.swp
 tags
 cspl_accounting_tweaks/docs/current
+*__pycache__*
