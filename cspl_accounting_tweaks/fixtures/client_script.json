@@ -1,0 +1,15 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Bank Transaction",
+  "enabled": 1,
+  "modified": "2021-07-02 12:08:42.823065",
+  "name": "Bank Transaction-Form",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "    frappe.provide(\"frappe.utils\")\n    // https://discuss.erpnext.com/t/redirecting-to-new-doc/25980/7\n    // https://discuss.erpnext.com/t/erpnext-v12-3-1-new-doctype-doctype-action-doctype-link-child-table/56659/6\n    // https://about.lovia.life/docs/infrastructure/erpnext/erpnext-custom-doctypes-actions-and-links/\n    // https://discuss.erpnext.com/t/tutorial-add-custom-action-button-custom-menu-button-custom-icon-button-in-form-view/45260\n    // https://discuss.erpnext.com/t/add-custom-button-in-child-table/47405/4\n    // https://github.com/frappe/frappe/wiki/Developer-Cheatsheet\n    // https://discuss.erpnext.com/t/how-create-and-insert-a-new-document-through-custom-script/39158/6\n    // https://discuss.erpnext.com/t/get-singles-value-in-js/18389/4\n    // https://programtalk.com/python-examples/frappe.db.get_default/\n    // https://discuss.erpnext.com/t/add-entries-to-a-doctype-table-with-javascript/21859/8\n// https://discuss.erpnext.com/t/tutorial-set-df-property-for-child-table-fields/13278    \n\nfrappe.ui.form.on('Bank Transaction', {\n    refresh(frm) {\n        // your code here\n    }\n})\n\nfrappe.ui.form.on('Bank Transaction Payments', {\n    create_document: function(frm, cdt,cdn) {\n    // console.log(\"HERE\")\n    // let D = frm.fields_dict\n    let pay_row = locals[cdt][cdn]\n    let BTdoc = frm.doc\n    let prow_pay = pay_row.payment_entry\n    let prow_pay_doc = pay_row.payment_document\n    let alloc_amt = frm.fields_dict['withdrawal'].value+frm.fields_dict['deposit'].value\n    \n    // console.log(`Row Index: ${prow_pay.idx}`)\n    // if(!(prow_pay)){\n    //     prow_pay=\"\"\n    // }\n    frappe.call({\n        method: \"cspl_accounting_tweaks.cspl_accounting_tweaks.utils.create_document.create_payment_entry_bank_transaction\",\n        args: {\n                    \"bank_transaction_name\": BTdoc.name,\n                    \"payment_row_doc_type\": prow_pay_doc,\n                    \"payment_entry\": prow_pay\n                },\n        callback: function(r){\n            if(!r.exc && r.message) {\n                console.log(r)\n                console.log(alloc_amt)\n                console.log(r.message.name)\n                frappe.model.set_value(cdt,cdn, 'allocated_amount',alloc_amt)\n                frappe.model.set_value(cdt,cdn, 'payment_entry',r.message.name)\n                frm.save\n                frm.refresh\n                frappe.set_route(\"Form\", r.message.doctype, r.message.name);\n            }\n        }\n    })\n            \n        }\n    })",
+  "view": "Form"
+ }
+]
