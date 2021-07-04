@@ -192,5 +192,8 @@ fixtures = [	{
 		, "Client Script"
         , "Property Setter"
         , "Letter Head"
+        , {
+            "dt": "Role Profile", "filters":{"name": ["in", ("Power User")]}
+        }
 		]
 
