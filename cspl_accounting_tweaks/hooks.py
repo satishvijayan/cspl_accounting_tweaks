@@ -187,7 +187,7 @@ fixtures = [	{
                 "filters": { "custom" : ["=", "1"] }
                	}
 		, {
-                "dt": "Custom Field", "filters": {"name" : ["in", ("Company-accounting_tweaks", "Company-default_customer_for_bank_transaction", "Company-default_supplier_for_bank_transaction", "Company-default_payment_mode")]}
+                "dt": "Custom Field", "filters": {"name" : ["in", ("Company-accounting_tweaks", "Company-default_customer_for_bank_transaction", "Company-default_supplier_for_bank_transaction", "Company-default_payment_mode", "Bank Transaction Payments-create_document")]}
                 }
 		, "Client Script"
         , "Property Setter"
