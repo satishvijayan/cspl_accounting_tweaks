@@ -17,7 +17,7 @@
 #  https://discuss.erpnext.com/t/redirecting-to-new-doc/25980/4
 # https://discuss.erpnext.com/t/map-frappe-model-mapper-get-mapped-doc-doctype-with-other-s-doctype-child-table/29556/3
 # https://discuss.erpnext.com/t/how-to-fetch-child-tables/12348/31
-
+# https://github.com/frappe/frappe/blob/develop/frappe/email/doctype/auto_email_report/auto_email_report.py
 from __future__ import unicode_literals
 import frappe, math
 from frappe import _
@@ -31,14 +31,14 @@ def create_payment_entry_bank_transaction(bank_transaction_name, payment_row_doc
     P = payment_row_doc_type
     bt_doc = frappe.get_doc("Bank Transaction",  bank_transaction_name)
     dt = bt_doc.date
-    ref = bt_doc.reference_number
-    desc = bt_doc.description
+    ref = bt_doc.reference_number if bt_doc.reference_number else "None"
+    desc = bt_doc.description if bt_doc.description else "No Description Provided"
     pay = bt_doc.withdrawal
     receive = bt_doc.deposit
     Bank=bt_doc.bank_account
     DefComp=bt_doc.company
     DefBank= frappe.get_value('Bank Account',{"name": Bank},  'account', )
-    DefExp = frappe.get_value('Company',{"name": DefComp},  'default_deferred_expense_account')
+    DefExp = frappe.get_value('Company',{"name": DefComp},  'unreconciled_expenses_account')
     # frappe.msgprint(DefBank)
     # frappe.msgprint(P)
     # frappe.msgprint(bt_doc.payment_entry(payment_row_idx).payment_document)
