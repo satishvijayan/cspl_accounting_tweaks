@@ -192,8 +192,12 @@ fixtures = [	{
 		, "Client Script"
         , "Property Setter"
         , "Letter Head"
+        , "States And Provinces"
         , {
             "dt": "Role Profile", "filters":{"name": ["in", ("Power User")]}
+        }
+        , {
+                    "dt": "Custom DocPerm", "filters": {"parent": ["in",("States And Provinces")]}
         }
 		]
 

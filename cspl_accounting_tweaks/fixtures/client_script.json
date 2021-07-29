@@ -2,6 +2,19 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Nexdha CC2CASA Transaction",
+  "enabled": 0,
+  "modified": "2021-07-26 16:50:14.759426",
+  "name": "Nexdha CC2CASA Transaction-Form",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "frappe.provide(\"frappe.utils\")\n\nfrappe.ui.form.on('Nexdha CC2CASA Transaction', {\n    before_submit: function(frm, cdt, cdn){\n        // your code here\n        let pg_doc=frm.doc\n        frappe.call({\n            method: \"nexdha.nexdha.pg_transaction.submit_nexdha_cc2casa_transaction\",\n            args: {\n                        \"doc_name\": pg_doc.name\n                    },\n            callback: function(r){\n                if(!r.exc && r.message) {\n                    console.log(r)\n                    // console.log(r.message.name)\n                    frappe.model.set_value(cdt,cdn, 'customer_record',r.message.customer)\n\n                    // frappe.set_route(\"Form\", r.message.doctype, r.message.name);\n                }\n            }\n            \n        })\n    }   \n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Bank Transaction",
   "enabled": 1,
   "modified": "2021-07-02 12:08:42.823065",
