@@ -201,3 +201,10 @@ fixtures = [	{
         }
 		]
 
+doc_events ={   "Sales Invoice": { 
+                    "before_submit": "cspl_accounting_tweaks.cspl_accounting_tweaks.utils.data_import_utils.populate_invoice_taxes"
+                },
+                "Purchase Invoice": {
+                    "before_submit": "cspl_accounting_tweaks.cspl_accounting_tweaks.utils.data_import_utils.populate_invoice_taxes"
+                }
+            }
