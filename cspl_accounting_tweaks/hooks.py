@@ -198,7 +198,10 @@ fixtures = [	{
         }
         , {
                     "dt": "Custom DocPerm", "filters": {"parent": ["in",("States And Provinces")]}
-        }
+        },{
+                        "dt": "Workspace", "filters":{"name":["like","cspl_accounting_tweaks"]}
+                }
+
 		]
 
 doc_events ={   "Sales Invoice": { 
