@@ -2904,8 +2904,7 @@
   "title_field": null,
   "track_changes": 1,
   "track_seen": 0,
-  "track_views": 0,
-  "website_search_field": null
+  "track_views": 0
  },
  {
   "_assign": null,
@@ -3832,8 +3831,7 @@
   "title_field": null,
   "track_changes": 1,
   "track_seen": 0,
-  "track_views": 0,
-  "website_search_field": null
+  "track_views": 0
  },
  {
   "_assign": null,
@@ -4405,8 +4403,7 @@
   "title_field": null,
   "track_changes": 1,
   "track_seen": 0,
-  "track_views": 0,
-  "website_search_field": null
+  "track_views": 0
  },
  {
   "_assign": null,
@@ -5773,8 +5770,7 @@
   "title_field": null,
   "track_changes": 1,
   "track_seen": 0,
-  "track_views": 0,
-  "website_search_field": null
+  "track_views": 0
  },
  {
   "_assign": null,
@@ -6206,7 +6202,6 @@
   "title_field": null,
   "track_changes": 1,
   "track_seen": 0,
-  "track_views": 0,
-  "website_search_field": null
+  "track_views": 0
  }
 ]
