@@ -1,6 +1,23 @@
 [
  {
   "default_value": null,
+  "doc_type": "Purchase Invoice",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "naming_series",
+  "modified": "2021-08-27 11:44:31.642415",
+  "name": "Purchase Invoice-naming_series-options",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "property": "options",
+  "property_type": "Text",
+  "row_name": null,
+  "value": "ACC-PINV-.YYYY.-\nACC-PINV-RET-.YYYY.-"
+ },
+ {
+  "default_value": null,
   "doc_type": "Item Price",
   "docstatus": 0,
   "doctype": "Property Setter",
